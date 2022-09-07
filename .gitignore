@@ -1,6 +1,9 @@
 #Build
 target
 
+#Resources
+**/resources/*Output
+
 # Compiled class file
 *.class
 
