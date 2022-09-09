@@ -1,8 +1,8 @@
 #Build
 target
 
-#Resources
-**/resources/*Output
+#output dir
+output
 
 # Compiled class file
 *.class
