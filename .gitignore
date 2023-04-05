@@ -10,12 +10,6 @@ output
 # Log file
 *.log
 
-# BlueJ files
-*.ctxt
-
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
-
 # Package Files #
 *.jar
 *.war
@@ -25,9 +19,26 @@ output
 *.tar.gz
 *.rar
 
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+# Maven
+!.mvn/wrapper/maven-wrapper.jar
+
+# Build
+target/
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+# Virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 
-#IDEA
+# IDEA
 .idea
+*.iws
 *.iml
+*.ipr
+
+# VSCODE
+.vscode
+
+# Other
+HELP.md
+.DS_Store
