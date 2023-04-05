@@ -1,10 +1,14 @@
-package com.github.ducknowledges.io.scanning;
+package com.github.ducknowledges.io.scanner;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Locale;
 import java.util.Scanner;
 
-public class ScannerBufferedCharStreamIntoIndividualTokens {
+public class ScannerCharStreamIndividualTokens {
     public static void main(String[] args) throws IOException {
         scanCharStream();
         scanCharStreamAutocloseable();
@@ -16,7 +20,8 @@ public class ScannerBufferedCharStreamIntoIndividualTokens {
         double sum = 0;
 
         try {
-            scanner = new Scanner(new BufferedReader(new FileReader("src/main/resources/numbersInput")));
+            scanner = new Scanner(new BufferedReader(
+                new FileReader("src/main/resources/numbersInput")));
             scanner.useLocale(Locale.US);
             outputStream = new BufferedWriter(new FileWriter(
                     "src/main/resources/scannedBufferedCharIntoTokensOutput")

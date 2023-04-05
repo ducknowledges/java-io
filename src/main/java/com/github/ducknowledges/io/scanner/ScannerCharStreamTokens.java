@@ -1,6 +1,10 @@
 package com.github.ducknowledges.io.scanner;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class ScannerCharStreamTokens {
@@ -14,7 +18,8 @@ public class ScannerCharStreamTokens {
         BufferedWriter outputStream = null;
         try {
             scanner = new Scanner(new BufferedReader(new FileReader("input/input")));
-            outputStream = new BufferedWriter(new FileWriter("output/scannedCharStreamTokens"));
+            outputStream = new BufferedWriter(
+                new FileWriter("output/scannedCharStreamTokens"));
             scanner.useDelimiter(" ");
             while (scanner.hasNext()) {
                 outputStream.write(scanner.next());
@@ -22,12 +27,11 @@ public class ScannerCharStreamTokens {
             }
         } catch (IOException exception) {
             System.err.println(exception.getMessage());
-        }
-        finally {
+        } finally {
             if (scanner != null) {
                 scanner.close();
                 IOException ioException = scanner.ioException();
-                if((new IOException()).equals(ioException)) {
+                if ((new IOException()).equals(ioException)) {
                     System.err.println(ioException.getMessage());
                 }
             }
@@ -43,7 +47,8 @@ public class ScannerCharStreamTokens {
 
     private static void scanCharStreamAutocloseable() {
         try (Scanner scanner = new Scanner(new BufferedReader(new FileReader("input/input")));
-             BufferedWriter outputStream = new BufferedWriter(new FileWriter("output/scannedCharStreamTokens"))
+             BufferedWriter outputStream = new BufferedWriter(
+                 new FileWriter("output/scannedCharStreamTokens"))
         ) {
             scanner.useDelimiter(" ");
             while (scanner.hasNext()) {

@@ -1,6 +1,10 @@
 package com.github.ducknowledges.io.scanner;
 
-import java.io.*;
+import java.io.BufferedInputStream;
+import java.io.BufferedWriter;
+import java.io.FileInputStream;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class ScannerByteStreamTokens {
@@ -9,7 +13,7 @@ public class ScannerByteStreamTokens {
         scanByteStreamAutocloseable();
     }
 
-    private static void scanByteStream(){
+    private static void scanByteStream() {
         Scanner scanner = null;
         BufferedWriter outputStream = null;
         try {
@@ -22,12 +26,11 @@ public class ScannerByteStreamTokens {
             }
         } catch (IOException exception) {
             System.err.println(exception.getMessage());
-        }
-        finally {
+        } finally {
             if (scanner != null) {
                 scanner.close();
                 IOException ioException = scanner.ioException();
-                if((new IOException()).equals(ioException)) {
+                if ((new IOException()).equals(ioException)) {
                     System.err.println(ioException.getMessage());
                 }
             }

@@ -1,44 +1,60 @@
 package com.github.ducknowledges.io.bufferedstreams;
 
-import java.io.*;
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 public class CopyBufferedBytes {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         copyBufferedBytes();
         copyBufferedBytesAutocloseable();
     }
 
-    private static void copyBufferedBytes() throws IOException {
+    private static void copyBufferedBytes() {
         BufferedInputStream inputStream = null;
         BufferedOutputStream outputStream = null;
-
         try {
-            inputStream = new BufferedInputStream(new FileInputStream("src/main/resources/input"));
-            outputStream = new BufferedOutputStream(new FileOutputStream("src/main/resources/bufferedByteOutput"));
-            int readedByte;
-            while ((readedByte = inputStream.read()) != -1) {
-                outputStream.write(readedByte);
+            inputStream = new BufferedInputStream(new FileInputStream("input/input"));
+            outputStream = new BufferedOutputStream(
+                new FileOutputStream("output/bufferedByteOutput"));
+            int readByte;
+            while ((readByte = inputStream.read()) != -1) {
+                outputStream.write(readByte);
             }
+        } catch (IOException e) {
+            System.err.println(e.getMessage());
         } finally {
             if (inputStream != null) {
-                inputStream.close();
+                try {
+                    inputStream.close();
+                } catch (IOException e) {
+                    System.err.println(e.getMessage());
+                }
             }
             if (outputStream != null) {
-                outputStream.close();
+                try {
+                    outputStream.close();
+                } catch (IOException e) {
+                    System.err.println(e.getMessage());
+                }
             }
         }
     }
 
-    private static void copyBufferedBytesAutocloseable() throws IOException {
+    private static void copyBufferedBytesAutocloseable() {
         try (
                 BufferedInputStream inputStream = new BufferedInputStream(
-                        new FileInputStream("src/main/resources/input"));
+                        new FileInputStream("input/input"));
                 BufferedOutputStream outputStream = new BufferedOutputStream(
-                        new FileOutputStream("src/main/resources/bufferedByteOutput"))) {
+                        new FileOutputStream("output/bufferedByteOutput"))) {
             int readedByte;
             while ((readedByte = inputStream.read()) != -1) {
                 outputStream.write(readedByte);
             }
+        } catch (IOException e) {
+            System.err.println(e.getMessage());
         }
     }
 }
